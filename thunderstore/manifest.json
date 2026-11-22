@@ -1,0 +1,7 @@
+{
+    "name": "InvokyrAdminMenu",
+    "version_number": "0.1.0",
+    "website_url": "https://github.com/darkharasho/invokyr-admin-menu",
+    "description": "Host admin menu for Invokyr (F1): choose which players may spend the team's money. Blocked players can't buy from the shop or pay for room skins. Only the host needs it.",
+    "dependencies": []
+}
