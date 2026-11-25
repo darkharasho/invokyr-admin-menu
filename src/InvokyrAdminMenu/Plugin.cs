@@ -11,7 +11,7 @@ namespace InvokyrAdminMenu
     {
         public const string PluginGuid = "com.darkharasho.invokyr.adminmenu";
         public const string PluginName = "InvokyrAdminMenu";
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "0.1.1";
 
         internal static new ManualLogSource Log;
         internal static ConfigEntry<string> ToggleKey;
