@@ -1,3 +1,5 @@
+// Fields are read by name by settings menus; not every one is set here.
+#pragma warning disable CS0649
 namespace InvokyrAdminMenu
 {
     /// <summary>
@@ -9,5 +11,9 @@ namespace InvokyrAdminMenu
     {
         public string DispName;
         public int? Order;
+        /// <summary>False hides the setting from settings menus (InvokyrConfig, ConfigurationManager).</summary>
+        public bool? Browsable;
+        public bool? ReadOnly;
+        public bool? IsAdvanced;
     }
 }

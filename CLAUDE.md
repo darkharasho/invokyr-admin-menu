@@ -12,6 +12,8 @@ A BepInEx 6 (BepInEx.Unity.IL2CPP, be.755) mod for Invokyr (Unity 6000.3, IL2CPP
 - Not covered: `Save.BuyLastChanceClock(int)` (static, no buyer).
 
 ## UI
+Only one overlay at a time: `AdminMenuController.IsOpen` is public for InvokyrConfig, and the menu won't open while `InvokyrConfig.OverlayState.IsOpen` is set (both read by reflection, `ExternalFlag.cs`). `Spending.Players` is `Browsable = false` so settings panels don't show it.
+
 IMGUI drawn with `GUI.Label`/`GUI.DrawTexture` only and our own input (`Ui.cs`, `Theme.cs`, shared with moonsweepers-admin-menu, where controls needing a control id failed to unstrip). `new GUIStyle(GUIStyle)` doesn't exist in this interop; use `new GUIStyle()`. While open: `InputsManager.Instance.Disable()`, free cursor, `EventSystem.current` disabled.
 
 ## Building and testing

@@ -21,6 +21,9 @@ namespace InvokyrAdminMenu
         private const float WindowHeight = 700f;
 
         private bool _open;
+        /// <summary>Read by InvokyrConfig (by reflection) so the two overlays never open on top of each other.</summary>
+        public static bool IsOpen { get; private set; }
+        private static readonly ExternalFlag ModSettingsOpen = new ExternalFlag("InvokyrConfig.OverlayState", "IsOpen");
         private InputsManager _inputs;
         private EventSystem _eventSystem;
         private bool _disabledEvents;
@@ -95,6 +98,8 @@ namespace InvokyrAdminMenu
                 Close(lost: false);
             else if (!Players.Hosting)
                 ShowToast("Admin menu: host only");
+            else if (ModSettingsOpen.Get())
+                ShowToast("Close mod settings first");
             else
                 Open();
         }
@@ -113,6 +118,7 @@ namespace InvokyrAdminMenu
             }
             MenuInput.Reset();
             _open = true;
+            IsOpen = true;
             _scroll = 0f;
             _status = "";
             KeepCursorFree();
@@ -124,6 +130,7 @@ namespace InvokyrAdminMenu
             if (!_open)
                 return;
             _open = false;
+            IsOpen = false;
             MenuInput.Reset();
             try
             {

@@ -11,7 +11,7 @@ namespace InvokyrAdminMenu
     {
         public const string PluginGuid = "com.darkharasho.invokyr.adminmenu";
         public const string PluginName = "InvokyrAdminMenu";
-        public const string PluginVersion = "0.1.1";
+        public const string PluginVersion = "0.1.2";
 
         internal static new ManualLogSource Log;
         internal static ConfigEntry<string> ToggleKey;
@@ -40,7 +40,7 @@ namespace InvokyrAdminMenu
                 null, new ConfigurationManagerAttributes { DispName = "Blocked message", Order = 0 }));
             SpendingList = Config.Bind("Spending", "Players", "", new ConfigDescription(
                 "Who may spend (SteamID64:allow or SteamID64:block, comma separated). Set from the admin menu.",
-                null, new ConfigurationManagerAttributes { DispName = "Players", Order = -1 }));
+                null, new ConfigurationManagerAttributes { DispName = "Players", Order = -1, Browsable = false }));
 
             Rules = SpendingRules.Parse(SpendingList.Value, BlockNewPlayers.Value);
             BlockNewPlayers.SettingChanged += OnBlockNewPlayersChanged;
